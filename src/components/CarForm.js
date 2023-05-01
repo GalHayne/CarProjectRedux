@@ -3,9 +3,8 @@ import { changeCost, changeName, addCar } from "../store";
 
 function CarForm() {
     const dispatch = useDispatch();
-    const { name, cost, cars } = useSelector((state) => {
+    const { name, cost } = useSelector((state) => {
         return {
-            cars: state.cars.cars,
             name: state.form.name,
             cost: state.form.cost,
         }
@@ -62,7 +61,6 @@ function CarForm() {
                     <button className="button is-link">Sumbit</button>
                 </div>
             </form>
-            {JSON.stringify(cars)}
         </div>
     )
 }
