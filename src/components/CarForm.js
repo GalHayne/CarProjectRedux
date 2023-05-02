@@ -23,13 +23,13 @@ function CarForm() {
         event.preventDefault();
 
         dispatch(addCar({ name, cost }))
-        // dispatch(changeName(""));
-        // dispatch(changeCost(""));
+        // dispatch(changeName(''));
+        // dispatch(changeCost(0));
     };
 
 
     return (
-        <div className="car-form panel">CarForm
+        <div className="car-form panel">
             <h4 className="subtitle is-3">Add Car</h4>
             <form onSubmit={handleSumbit}>
                 <div className="field-group">
