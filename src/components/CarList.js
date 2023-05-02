@@ -6,7 +6,12 @@ import { removeCar } from "../store/slices/carsSlice";
 function CarList() {
     const dispath = useDispatch();
     const cars = useSelector((state) => {
-        return state.cars.data;
+        const { data, searchTeam } = state.cars;
+
+        return data.filter((car) => {
+            return car.name.toLowerCase().includes(searchTeam.toLowerCase());
+        });
+
     })
 
     const handleCarDelete = (car) => {
