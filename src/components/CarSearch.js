@@ -5,7 +5,6 @@ function CarSearch() {
     const dispath = useDispatch();
 
     const searchTeam = useSelector((state) => {
-        console.log(state.cars.searchTeam);
         return state.cars.searchTeam;
 
     })
