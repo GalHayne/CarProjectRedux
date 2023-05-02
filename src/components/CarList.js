@@ -11,8 +11,6 @@ function CarList() {
             return car.name.toLowerCase().includes(searchTeam.toLowerCase());
         });
 
-        console.log(filteredCars);
-
         return {
             cars: filteredCars,
             name: form.name
@@ -24,15 +22,13 @@ function CarList() {
         dispath(removeCar(car.id))
     }
 
-    console.log(cars);
-
     const renderCars = cars.map((car) => {
 
         const bold = name && car.name.toLowerCase().includes(name.toLowerCase());
 
 
         return (
-            <div key={car.id} className={`panel ${bold && 'bold'}`}>
+            <div key={car.id} className={`panel ${bold && 'bold has-text-danger'}`}>
                 <p>
                     {car.name} - ${car.cost}
                 </p>
