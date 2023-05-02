@@ -5,12 +5,18 @@ import { removeCar } from "../store/slices/carsSlice";
 
 function CarList() {
     const dispath = useDispatch();
-    const cars = useSelector((state) => {
-        const { data, searchTeam } = state.cars;
+    const { cars, name } = useSelector(({ form, cars: { data, searchTeam } }) => {
 
-        return data.filter((car) => {
+        const filteredCars = data.filter((car) => {
             return car.name.toLowerCase().includes(searchTeam.toLowerCase());
         });
+
+        console.log(filteredCars);
+
+        return {
+            cars: filteredCars,
+            name: form.name
+        };
 
     })
 
@@ -18,9 +24,15 @@ function CarList() {
         dispath(removeCar(car.id))
     }
 
+    console.log(cars);
+
     const renderCars = cars.map((car) => {
+
+        const bold = name && car.name.toLowerCase().includes(name.toLowerCase());
+
+
         return (
-            <div key={car.id} className="panel">
+            <div key={car.id} className={`panel ${bold && 'bold'}`}>
                 <p>
                     {car.name} - ${car.cost}
                 </p>
