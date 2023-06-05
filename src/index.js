@@ -6,6 +6,9 @@ import { Provider } from "react-redux";
 import { store } from "./store"
 import App from './App'
 
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle";
+
 
 const el = document.getElementById('root');
 const root = createRoot(el);

@@ -23,9 +23,20 @@ const carsSlice = createSlice({
             })
 
             state.data = updateCars;
+        },
+        updateCar(state, action) {
+            const updateCars = state.data.map((car) => {
+                if (car.id === action.payload.id) {
+                    return action.payload;
+                } else {
+                    return car;
+                }
+            })
+
+            state.data = updateCars;
         }
     }
 });
 
-export const { changeSearchTerm, removeCar, addCar } = carsSlice.actions;
+export const { changeSearchTerm, removeCar, addCar, updateCar } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;
