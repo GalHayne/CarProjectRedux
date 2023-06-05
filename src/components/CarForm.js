@@ -56,7 +56,7 @@ function CarForm() {
                     </div>
                 </div>
                 <div className="field">
-                    <button className="button is-link">Sumbit</button>
+                    <button className="button is-link">Add Car</button>
                 </div>
             </form>
         </div>

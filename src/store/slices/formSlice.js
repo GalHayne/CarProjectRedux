@@ -24,7 +24,6 @@ const formSlice = createSlice({
         });
     }
 
-
 });
 
 export const { changeName, changeCost } = formSlice.actions;
