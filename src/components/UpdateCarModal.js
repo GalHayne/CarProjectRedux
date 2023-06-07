@@ -16,11 +16,16 @@ const UpdateCarModal = ({ onClose, selectedCar }) => {
     }
 
     const handleChangeCost = (e) => {
+        let cost = e.target.value
+        if (cost !== "") {
+            cost = parseInt(cost);
+        }
         setCar((prevCar) => {
-            const updateCar = { ...prevCar, cost: parseInt(e.target.value) }
+            const updateCar = { ...prevCar, cost }
             return updateCar;
         })
     }
+
 
     const hadnleUpdateCar = () => {
         dispath(updateCar(car))
@@ -28,23 +33,24 @@ const UpdateCarModal = ({ onClose, selectedCar }) => {
     }
 
     return (
-        <div className="bg-light p-3 rounded" style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-        }}>
-            <h3>
-                Car Update
-            </h3>
-            <button className="border-0 bg-transparent position-absolute top-0 end-0" onClick={onClose}>X</button>
-            <input className="rounded m-2" type="text" value={car.name} onChange={(e) => handleChangeName(e)} required />
-            <input className="rounded m-2" type="number" min={1} value={car.cost} onChange={(e) => handleChangeCost(e)} required />
-            <button className="button is-primary m-2" onClick={() => hadnleUpdateCar()}>Update
-            </button>
-            <button className="button is-danger m-2" onClick={onClose}>Close</button>
-
-        </div>
+        <form onSubmit={hadnleUpdateCar}>
+            <div className="bg-light p-3 rounded" style={{
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+            }}>
+                <h3>
+                    Car Update
+                </h3>
+                <button className="border-0 bg-transparent position-absolute top-0 end-0" onClick={onClose}>X</button>
+                <input required className="rounded m-2" type="text" value={car.name} onChange={(e) => handleChangeName(e)} />
+                <input className="rounded m-2" type="number" min={1} value={car.cost} onChange={(e) => handleChangeCost(e)} />
+                <button disabled={car.cost === 0 || car.cost === "" || car.name === "" || car.name.trim().length === 0} className="button is-primary m-2" onClick={() => hadnleUpdateCar()}>Update
+                </button>
+                <button className="button is-danger m-2" onClick={onClose}>Close</button>
+            </div>
+        </form>
     )
 }
 
