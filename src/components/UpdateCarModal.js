@@ -16,11 +16,16 @@ const UpdateCarModal = ({ onClose, selectedCar }) => {
     }
 
     const handleChangeCost = (e) => {
+        let cost = e.target.value
+        if (cost !== "") {
+            cost = parseInt(cost);
+        }
         setCar((prevCar) => {
-            const updateCar = { ...prevCar, cost: parseInt(e.target.value) }
+            const updateCar = { ...prevCar, cost }
             return updateCar;
         })
     }
+
 
     const hadnleUpdateCar = () => {
         dispath(updateCar(car))
@@ -37,7 +42,7 @@ const UpdateCarModal = ({ onClose, selectedCar }) => {
             <h3>
                 Car Update
             </h3>
-            <button className="border-0 bg-transparent m-1 position-absolute top-0 end-0" onClick={onClose}>X</button>
+            <button className="border-0 bg-transparent position-absolute top-0 end-0" onClick={onClose}>X</button>
             <input className="rounded m-2" type="text" value={car.name} onChange={(e) => handleChangeName(e)} required />
             <input className="rounded m-2" type="number" min={1} value={car.cost} onChange={(e) => handleChangeCost(e)} required />
             <button className="button is-primary m-2" onClick={() => hadnleUpdateCar()}>Update
